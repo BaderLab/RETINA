@@ -58,16 +58,16 @@ In addition, for comparison, we have the benchmark models that were pre-trained 
 
 If you found the pre-training process is too time or computational resource consuming, you might want to directly download the pre-trained model mentioned above and then start the fine-tuning part. Or you might want to further pre-train the model based on our submitted pre-trained model in order to gain better performance.
 
-Before running fine-tuning, we need to ensure the right directory of the pre-trained model that is written in .yaml file in each benchmark directory. And in each benchmark directory, we also submitted a corresponding .slurm file to submit the job, therefore, one can simply submit the job by using the slurm script
+Before running fine-tuning, we need to ensure the right directory of the pre-trained model that is written in .yaml file in each benchmark directory. And in each benchmark directory, we also submitted a corresponding .slurm file to submit the job, therefore, one can simply submit the job by using the slurm script which is placed in the inference folder
 
 ```bash
 sbatch run.slurm
 ```
-If you have got your own dataset for fine-tuning, simply change the directory in .yaml file.
+If you have got your own dataset for fine-tuning, simply change the directory in .yaml file. The example of .yaml is offered in the inference folder and can be customized based on your own dataset easily.
 
 ### Inference
 
-After fine-tuning, the RETINA can infer on the test images. For each benchmark directory, we offered file for inference.
+After fine-tuning, RETINA can infer on the test images. For each benchmark directory, we offered two different types of inference, including 2D and 3D inference, placed in the inference folder.
 
 ```bash
 python inference3d.py
