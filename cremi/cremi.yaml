@@ -1,0 +1,76 @@
+# Benchmark dataset parameters
+experiment_name: "cremi"
+num_classes: 1
+class_names: 
+  - "synaptic_cleft"
+
+# set the directories for data and models
+# change the directory to the path of the dataset and model. 
+data_dir: "/cremi/2d/train"
+model_dir: "/cremi/checkpoint"
+logging: False
+save_interval: 500
+resume: ""
+restart_training: False
+
+#hyperparameters
+bsz: # customized based on GPU memory
+jobs: 4
+transformer_layer: 12
+pretrain: True
+pretrain_file: '/RETINA/checkpoint_pretrain/pretrain_200.pt'
+finetuned: False
+finetuned_file: ''
+#choice of none, layer4, layer3, layer2, layer 1, or all
+finetune_layer: "none"
+unfreeze_encoder_bn: False
+
+lr: 0.003 
+wd: 0.1
+optim: "AdamW"
+lr_policy: ""
+iters: 10000
+
+norms:
+    mean: 0.27342241
+    std: 0.26917548
+  
+#currently only IoU is supported
+metrics:
+  - "IoU"
+num_prints: 100
+
+#list the augmentations to use during training
+augmentations:
+  - aug: "PadIfNeeded"
+    min_height: 224
+    min_width: 224
+  - aug: "CropNonEmptyMaskIfExists"
+    height: 224
+    width: 224
+    p: 0.8
+  - aug: "RandomResizedCrop"
+    height: 224
+    width: 224
+    scale:
+      - 0.08
+      - 1.0
+    ratio:
+      - 0.5
+      - 1.5
+  - aug: "Rotate"
+    limit: 180
+  - aug: "RandomBrightnessContrast"
+    brightness_limit: 0.3
+    contrast_limit: 0.3
+  - aug: "HorizontalFlip"
+  - aug: "VerticalFlip"
+  
+###INFERENCE SECTION 3D###
+test_dir3d: "/cremi/3d/test/"
+mode3d: "stack"
+threshold3d: 0.5
+eval_classes3d:
+  - 1
+mask_prediction3d: False
+save_dir3d: ''

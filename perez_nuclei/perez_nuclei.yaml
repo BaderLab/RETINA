@@ -1,0 +1,90 @@
+#dataset parameters
+experiment_name: "perez_nuclei"
+num_classes: 1
+class_names: 
+  - "nuclei"
+
+#set the directories for data and models
+data_dir: "/perez/nuclei/train"
+model_dir: "/RETINA/perez_nuclei/checkpoint"
+
+#whether to log the run in MLFlow
+#either True or False
+logging: False
+save_interval: 500
+#number of model checkpoints to save during training
+#if zero, the model's state is never saved
+num_save_checkpoints: 6
+
+#if a .pth file is given, model training will resume
+#from that checkpoint
+resume: ""
+
+#hyperparameters
+bsz: # customized based on GPU memory
+jobs: 4
+#choice of none, layer4, layer3, layer2, layer 1, or all
+finetune_layer: "none"
+#choice of True or False
+unfreeze_encoder_bn: False
+#currently, only resnet50 is supported
+encoder: "resnet50"
+transformer_layer: 12
+pretrain: True
+pretrain_file: '/RETINA/checkpoint_pretrain/pretrain_200.pt'
+
+lr: 0.003
+wd: 0.1
+#choice of AdamW or SGD
+optim: "AdamW"
+#choice of OneCycle, MultiStep, or Poly
+lr_policy: "OneCycle"
+
+#parameter only for SGD optim; AdamW uses default momentum values
+momentum: 0.9
+
+iters: 3000
+
+#parameters specific for Poly lr_policy
+power: 0.9
+
+#set pixel norm values
+norms:
+    mean: 0.35047498
+    std: 0.01674651
+  
+#currently only IoU is supported
+metrics:
+  - "IoU"
+
+num_prints: 30
+
+#list the augmentations to use during training
+augmentations:
+  - aug: "PadIfNeeded"
+    min_height: 224
+    min_width: 224
+  - aug: "RandomResizedCrop"
+    height: 224
+    width: 224
+    scale:
+      - 0.08
+      - 1.0
+    ratio:
+      - 0.5
+      - 1.5
+  - aug: "Rotate"
+    limit: 180
+  - aug: "RandomBrightnessContrast"
+    brightness_limit: 0.3
+    contrast_limit: 0.3
+  - aug: "HorizontalFlip"
+  - aug: "VerticalFlip"
+  
+###INFERENCE SECTION 2D###
+test_dir2d: ""
+threshold2d: 0.5
+instance_match2d: True
+eval_classes2d:
+  - 1
+save_dir2d: ''

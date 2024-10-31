@@ -1,0 +1,88 @@
+#dataset parameters
+experiment_name: "kasthuri_pp"
+num_classes: 1
+class_names:
+  - "mito"
+
+#set the directories for data and models
+data_dir: "/kasthuri_pp/train"
+model_dir: "/RETINA/kasthuri_pp/checkpoint"
+#whether to log the run in MLFlow
+#either True or False
+logging: False
+
+#number of model checkpoints to save during training
+#if zero, the model's state is never saved
+save_interval: 500
+
+restart_training: False
+
+#hyperparameters
+bsz: # customized based on GPU memory
+jobs: 4
+transformer_layer: 12
+pretrain: True
+# pretrain_file can also be imagenet, imagenet&CEM500K together
+# pre-trained parameter files are all uploaded
+pretrain_file: '/RETINA/checkpoint_pretrain/pretrain_200.pt'
+finetuned: False
+finetuned_file: ''
+# the percent of the Train images we take for training
+# 1 means to take all the images
+train_length: 1
+
+lr: 0.003
+wd: 0.1
+optim: "AdamW"
+lr_policy: ""
+
+#iterations are used for Poly and OneCycle,
+#epochs are used for MultiStep
+iters: 10000
+
+
+#set pixel norm values
+norms:
+    mean: 0.27342241
+    std: 0.26917548
+  
+#currently only IoU is supported
+metrics:
+  - "IoU"
+  
+#number of times to print/record metrics
+num_prints: 50
+
+#list the augmentations to use during training
+augmentations:
+  - aug: "PadIfNeeded"
+    min_height: 224
+    min_width: 224
+  - aug: "CropNonEmptyMaskIfExists"
+    height: 224
+    width: 224
+    p: 0.8
+  - aug: "RandomResizedCrop"
+    height: 224
+    width: 224
+    scale:
+      - 0.08
+      - 1.0
+    ratio:
+      - 0.5
+      - 1.5
+  - aug: "Rotate"
+    limit: 180
+  - aug: "RandomBrightnessContrast"
+    brightness_limit: 0.3
+    contrast_limit: 0.3
+  - aug: "HorizontalFlip"
+  - aug: "VerticalFlip"
+  
+###INFERENCE SECTION 2D###
+test_dir2d: ""
+threshold2d: 0.5
+instance_match2d: False
+eval_classes2d:
+  - 1
+save_dir2d: ''
