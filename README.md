@@ -82,7 +82,7 @@ python inference2d.py
 - We also thank the [TransUNet](https://github.com/Beckschen/TransUNet) research on which we took reference.
 
 
-If you find 3D-TransUNet useful for your research and applications, please cite using this BibTeX:
+If you find RETINA useful for your research and applications, please cite using this BibTeX:
 ```
 @article{xing2025retina,
   title={RETINA: Reconstruction-based Pre-Trained Enhanced TransUNet for Electron Microscopy Segmentation on the CEM500K Dataset},
