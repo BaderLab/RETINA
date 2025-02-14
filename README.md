@@ -79,4 +79,17 @@ python inference2d.py
 
 ## Acknowledgements
 - We thank the [CEM500K project](https://github.com/volume-em/cem-dataset?tab=readme-ov-file) for making the useful dataset.
-- We also thank the [TransUNet](https://github.com/Beckschen/TransUNet) research on which we took reference. 
+- We also thank the [TransUNet](https://github.com/Beckschen/TransUNet) research on which we took reference.
+
+
+If you find 3D-TransUNet useful for your research and applications, please cite using this BibTeX:
+```
+@article{xing2025retina,
+  title={RETINA: Reconstruction-based Pre-Trained Enhanced TransUNet for Electron Microscopy Segmentation on the CEM500K Dataset},
+  author={Xing, Cheng and Xie, Ronald and Bader, Gary},
+  journal={bioRxiv},
+  pages={2025--01},
+  year={2025},
+  publisher={Cold Spring Harbor Laboratory}
+}
+```
