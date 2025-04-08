@@ -51,7 +51,7 @@ sbatch pretrain.slurm
 ```
 Alternatively, one can directly run the python script for pretraining but need to ensure the required packages and the environment are set up correctly, which can be referred from the .slurm file. 
 ```bash
-python /RETINA/pretrain.py
+python pretrain.py
 ```
 When pre-training process is done, we will get the pre-trained parameters that can be transferred to fine-tuning part.
 For the convenience, we have uploaded the [pre-trained model](https://drive.google.com/drive/folders/1ijdk5pLYnqEK4YhGTogS4wrEvRqkZKX-?usp=drive_link) on google drive. 
@@ -69,7 +69,7 @@ sbatch run.slurm
 ```
 Alternatively, one can directly run the python script for finetuning but need to ensure the required packages and the environment are set up correctly, which can be referred from above or from the slurm file. 
 ```bash
-python /RETINA/train.py --config 'your config'
+python train.py --config 'your config'
 ```
 If you have got your own dataset for fine-tuning, simply change the directory in .yaml file. An example of .yaml is offered in the inference folder and can be customized based on your own dataset easily.
 
