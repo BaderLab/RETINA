@@ -49,6 +49,10 @@ The model was pre-trained on CEM500K dataset with almost 500,000 images. It was 
 ```bash
 sbatch pretrain.slurm
 ```
+Alternatively, one can directly run the python script for pretraining but need to ensure the required packages and the environment are set up correctly, which can be referred from the .slurm file. 
+```bash
+python /RETINA/pretrain.py
+```
 When pre-training process is done, we will get the pre-trained parameters that can be transferred to fine-tuning part.
 For the convenience, we have uploaded the [pre-trained model](https://drive.google.com/drive/folders/1ijdk5pLYnqEK4YhGTogS4wrEvRqkZKX-?usp=drive_link) on google drive. 
 
@@ -58,12 +62,16 @@ In addition, for comparison, we have the benchmark models that were pre-trained 
 
 If you found the pre-training process is too time or computational resource consuming, you might want to directly download the pre-trained model mentioned above and then start the fine-tuning part. Or you might want to further pre-train the model based on our submitted pre-trained model in order to gain better performance.
 
-Before running fine-tuning, we need to ensure the right directory of the pre-trained model that is written in .yaml file in each benchmark directory. And in each benchmark directory, we also submitted a corresponding .slurm file to submit the job, therefore, one can simply submit the job by using the slurm script which is placed in the inference folder
+Before running fine-tuning, we need to ensure the right directory of the pre-trained model that is written in .yaml file in your finetine data directory. And we submitted an example .slurm file to submit the job of finetuning, therefore, one can simply submit the job by using the slurm script
 
 ```bash
 sbatch run.slurm
 ```
-If you have got your own dataset for fine-tuning, simply change the directory in .yaml file. The example of .yaml is offered in the inference folder and can be customized based on your own dataset easily.
+Alternatively, one can directly run the python script for finetuning but need to ensure the required packages and the environment are set up correctly, which can be referred from above or from the slurm file. 
+```bash
+python /RETINA/train.py --config 'your config'
+```
+If you have got your own dataset for fine-tuning, simply change the directory in .yaml file. An example of .yaml is offered in the inference folder and can be customized based on your own dataset easily.
 
 ### Inference
 
