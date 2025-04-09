@@ -167,8 +167,5 @@ def trainer_synapse(args, model, rank, train_length = 1):
         if iter_num % args.save_interval == 0 and epoch_num != 0:
             save_mode_path = os.path.join(args.model_dir, 'iteration_' + str(iter_num) + '.pth')
             torch.save(model.state_dict(), save_mode_path)
-        if epoch_num % args.save_interval == 0 and epoch_num != 0:
-            save_mode_path = os.path.join(args.model_dir, 'epoch_' + str(epoch_num) + '.pth')
-            torch.save(model.state_dict(), save_mode_path)
         '''
     return "Training Finished!"
