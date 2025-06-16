@@ -93,11 +93,13 @@ python inference2d.py
 If you find RETINA useful for your research and applications, please cite using this BibTeX:
 ```
 @article{xing2025retina,
-  title={RETINA: Reconstruction-based Pre-Trained Enhanced TransUNet for Electron Microscopy Segmentation on the CEM500K Dataset},
-  author={Xing, Cheng and Xie, Ronald and Bader, Gary},
-  journal={bioRxiv},
-  pages={2025--01},
+  title={RETINA: Reconstruction-based pre-trained enhanced TransUNet for electron microscopy segmentation on the CEM500K dataset},
+  author={Xing, Cheng and Xie, Ronald and Bader, Gary D},
+  journal={PLOS Computational Biology},
+  volume={21},
+  number={5},
+  pages={e1013115},
   year={2025},
-  publisher={Cold Spring Harbor Laboratory}
+  publisher={Public Library of Science San Francisco, CA USA}
 }
 ```
